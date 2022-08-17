@@ -34,3 +34,10 @@ RcppExport SEXP expfun1(SEXP vec){
 ```
 install.packages("../test_1.0.tar.gz",rep = NULL,dependencies=TRUE, INSTALL_opts = c('--no-lock'))
 ```
+
+安装软件，设置镜像
+----
+```
+install.packages("metap",repos="http://mirrors.tuna.tsinghua.edu.cn/CRAN/")
+options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")     #需要重启
+```
