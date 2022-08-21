@@ -1,3 +1,6 @@
+R卡，不能进，清空R内存
+----
+cd ~/.local/share/rstudio/sessions/active
 ## 分隔数据
 ```
 cellcluster=cut(cellsum,quantile(cellsum,seq(0,1,1/5))) ## 按照5等分分隔
