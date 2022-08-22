@@ -33,7 +33,8 @@ RcppExport SEXP expfun1(SEXP vec){
 ```
 ### 保存cpp后，再用sourceCpp调用里面的函数，就可以直接用了
 
-#### 强行安装，repos代表不通过网络安装
+强行安装，repos代表不通过网络安装
+------
 ```
 install.packages("../test_1.0.tar.gz",repos  = NULL,dependencies=TRUE, INSTALL_opts = c('--no-lock'))
 ```
@@ -43,4 +44,22 @@ install.packages("../test_1.0.tar.gz",repos  = NULL,dependencies=TRUE, INSTALL_o
 ```
 install.packages("metap",repos="http://mirrors.tuna.tsinghua.edu.cn/CRAN/")
 options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")     #需要重启
+```
+
+并行
+----
+- https://zhuanlan.zhihu.com/p/70432486
+```
+library(parallel)
+#第一个函数，申请需要使用的逻辑核心数，cl可以理解为代表申请的逻辑核
+cl <- makeCluster(14)
+#第二个函数，在每个逻辑核（cl）上加载计算需要用到的R包
+clusterEvalQ(cl,library(statmod))
+#第三个函数，在每个逻辑核（cl）上加载用到的变量，这里写变量的名字
+clusterExport(cl,'y1')
+#开始运行
+result.tweedie=parApply(cl=cl,X=dat.microglia.nor,MARGIN=1,function(x){  
+  y=glm(y1~x,family=tweedie(var.power=1.6,link.power=0))
+  y2=summary(y)
+  return(c(y2$coefficients[2],y2$coefficients[8]))})
 ```
