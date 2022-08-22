@@ -35,7 +35,7 @@ RcppExport SEXP expfun1(SEXP vec){
 
 #### 强行安装，repos代表不通过网络安装
 ```
-install.packages("../test_1.0.tar.gz",rep = NULL,dependencies=TRUE, INSTALL_opts = c('--no-lock'))
+install.packages("../test_1.0.tar.gz",repos  = NULL,dependencies=TRUE, INSTALL_opts = c('--no-lock'))
 ```
 
 安装软件，设置镜像
