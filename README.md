@@ -62,4 +62,6 @@ result.tweedie=parApply(cl=cl,X=dat.microglia.nor,MARGIN=1,function(x){
   y=glm(y1~x,family=tweedie(var.power=1.6,link.power=0))
   y2=summary(y)
   return(c(y2$coefficients[2],y2$coefficients[8]))})
+#结束
+stopCluster(cl)
 ```
