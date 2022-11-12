@@ -43,6 +43,8 @@ install.packages("../test_1.0.tar.gz",repos  = NULL,dependencies=TRUE, INSTALL_o
 ----
 ```
 install.packages("metap",repos="http://mirrors.tuna.tsinghua.edu.cn/CRAN/")
+## bioconductor
+- https://www.bioconductor.org/about/mirrors/
 options(BioC_mirror="http://mirrors.ustc.edu.cn/bioc/")     #需要重启
 ```
 
